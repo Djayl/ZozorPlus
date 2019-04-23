@@ -77,15 +77,47 @@
 		C926DADB1D7581BB00477020 /* CountOnMe */ = {
 			isa = PBXGroup;
 			children = (
-				C926DADC1D7581BB00477020 /* AppDelegate.swift */,
-				C926DADE1D7581BB00477020 /* ViewController.swift */,
+				F002ADE6226F61990046DC28 /* Model */,
+				F002ADE4226F61630046DC28 /* Supported files */,
+				F002ADE5226F61750046DC28 /* Controller */,
+				F002ADE3226F61340046DC28 /* View */,
+			);
+			name = CountOnMe;
+			path = "Zozor+";
+			sourceTree = "<group>";
+		};
+		F002ADE3226F61340046DC28 /* View */ = {
+			isa = PBXGroup;
+			children = (
 				C926DAE01D7581BB00477020 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F002ADE4226F61630046DC28 /* Supported files */ = {
+			isa = PBXGroup;
+			children = (
+				C926DADC1D7581BB00477020 /* AppDelegate.swift */,
 				C926DAE31D7581BB00477020 /* Assets.xcassets */,
 				C926DAE51D7581BB00477020 /* LaunchScreen.storyboard */,
 				C926DAE81D7581BB00477020 /* Info.plist */,
 			);
-			name = CountOnMe;
-			path = "Zozor+";
+			path = "Supported files";
+			sourceTree = "<group>";
+		};
+		F002ADE5226F61750046DC28 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C926DADE1D7581BB00477020 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F002ADE6226F61990046DC28 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		F096FAA922663C76002DFCE9 /* CountOnMeTests */ = {
