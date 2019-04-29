@@ -8,16 +8,12 @@
 
 import UIKit
 
-protocol calculatingDelegate {
-    func didTapExpressionCorrect()
-    func didAddOperator()
-}
+
 
 class ViewController: UIViewController {
   
     
-    var expressionCorrectDelegate: calculatingDelegate!
-    var canAddOperatorDelegate: calculatingDelegate!
+  
     
     // MARK: - Outlets
     let calculating = Calculating()
@@ -35,56 +31,29 @@ class ViewController: UIViewController {
     }
 
     @IBAction func plus() {
-        canAddOperatorDelegate.didAddOperator()
+        
         calculating.plus()
+        textView.text = calculating.updateDisplay()
         
     }
 
     @IBAction func minus() {
-        canAddOperatorDelegate.didAddOperator()
+        
         calculating.minus()
+        textView.text = calculating.updateDisplay()
     }
 
     @IBAction func equal() {
-        expressionCorrectDelegate.didTapExpressionCorrect()
+        calculating.calculateTotal()
         textView.text = calculating.calculateTotal()
     }
     
 }
 
 
-extension ViewController: calculatingDelegate {
-    func didTapExpressionCorrect(){
-        var isExpressionCorrect: Bool{
-        if let stringNumber = calculating.stringNumbers.last {
-            if stringNumber.isEmpty {
-                if calculating.stringNumbers.count == 1 {
-                                       let alertVC = UIAlertController(title: "Zéro!", message: "Démarrez un nouveau calcul !", preferredStyle: .alert)
-                                        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                                       self.present(alertVC, animated: true, completion: nil)
-                } else {
-                                       let alertVC = UIAlertController(title: "Zéro!", message: "Entrez une expression correcte !", preferredStyle: .alert)
-                                       alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                                       self.present(alertVC, animated: true, completion: nil)
-                }
-                return false
-            }
-        }
-        return true
-    }
-    }
-    
-    func didAddOperator(){
-        var canAddOperator: Bool { //
-            if let stringNumber = calculating.stringNumbers.last {
-                if stringNumber.isEmpty {
-                                    let alertVC = UIAlertController(title: "Zéro!", message: "Expression incorrecte !", preferredStyle: .alert)
-                                    alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                                    self.present(alertVC, animated: true, completion: nil)
-                    return false
-                }
-            }
-            return true
-        }
+extension ViewController: warningHandler {
+    func displayWarning(warning: String) {
+        
     }
 }
+
