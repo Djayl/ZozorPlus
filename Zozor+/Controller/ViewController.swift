@@ -11,48 +11,53 @@ import UIKit
 
 
 class ViewController: UIViewController {
-  
     
-  
     
     // MARK: - Outlets
     let calculating = Calculating()
     @IBOutlet weak var textView: UITextView!
     @IBOutlet var numberButtons: [UIButton]!
-
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        calculating.warningHandlerDelegate = self
+    }
+    
     // MARK: - Action
-
+    
     @IBAction func tappedNumberButton(_ sender: UIButton) {
         for (i, numberButton) in numberButtons.enumerated() {
             if sender == numberButton {
-                calculating.addNewNumber(i)
+                textView.text = calculating.addNewNumber(i)
             }
         }
     }
-
+    
     @IBAction func plus() {
         
-        calculating.plus()
-        textView.text = calculating.updateDisplay()
+        textView.text = calculating.plus()
         
     }
-
+    
     @IBAction func minus() {
         
-        calculating.minus()
-        textView.text = calculating.updateDisplay()
+        textView.text = calculating.minus()
+    
     }
-
+    
     @IBAction func equal() {
-        calculating.calculateTotal()
         textView.text = calculating.calculateTotal()
+      
     }
     
 }
 
 
-extension ViewController: warningHandler {
-    func displayWarning(warning: String) {
+extension ViewController: WarningHandler {
+    func displayWarning(message: String) {
+        let alertVC = UIAlertController(title: "Zéro!", message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alertVC, animated: true, completion: nil)
         
     }
 }

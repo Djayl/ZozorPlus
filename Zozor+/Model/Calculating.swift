@@ -6,15 +6,15 @@
 //  Copyright © 2019 Ambroise Collon. All rights reserved.
 //
 
-protocol warningHandler {
-    func displayWarning(warning: String)
+protocol WarningHandler {
+    func displayWarning(message: String)
 }
 
 import Foundation
 
 class Calculating {
     
-    var warningHandlerDelegate: warningHandler?
+    var warningHandlerDelegate: WarningHandler?
     
     private var stringNumbers: [String] = [String()] //
     private var operators: [String] = ["+"] //
@@ -23,12 +23,9 @@ class Calculating {
         if let stringNumber = stringNumbers.last {
             if stringNumber.isEmpty {
                 if stringNumbers.count == 1 {
-                    warningHandlerDelegate?.displayWarning(warning: "Démarrez un nouveau calcul !")
+                    warningHandlerDelegate?.displayWarning(message: "Démarrez un nouveau calcul !")
                 } else {
-                    warningHandlerDelegate?.displayWarning(warning: "Entrez une expression correcte !")
-//                   let alertVC = UIAlertController(title: "Zéro!", message: "Entrez une expression correcte !", preferredStyle: .alert)
-//                    alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-//                    self.present(alertVC, animated: true, completion: nil)
+                    warningHandlerDelegate?.displayWarning(message: "Entrez une expression correcte !")
                 }
                 return false
             }
@@ -40,10 +37,7 @@ class Calculating {
     var canAddOperator: Bool { //
         if let stringNumber = stringNumbers.last {
             if stringNumber.isEmpty {
-                warningHandlerDelegate?.displayWarning(warning: "Expression incorrecte !")
-//                let alertVC = UIAlertController(title: "Zéro!", message: "Expression incorrecte !", preferredStyle: .alert)
-//                alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-//                self.present(alertVC, animated: true, completion: nil)
+                warningHandlerDelegate?.displayWarning(message: "Expression incorrecte !")
                 return false
             }
         }
@@ -51,22 +45,21 @@ class Calculating {
     }
     // MARK: - Methods
     
-    func addNewNumber(_ newNumber: Int) { //
+    func addNewNumber(_ newNumber: Int) -> String { //
         if let stringNumber = stringNumbers.last {
             var stringNumberMutable = stringNumber
             stringNumberMutable += "\(newNumber)"
             stringNumbers[stringNumbers.count-1] = stringNumberMutable
         }
-        updateDisplay()
+        return updateDisplay()
     }
     
-    func calculateTotal() { //
+    func calculateTotal() -> String  {
         if !isExpressionCorrect {
-            return
+            return ""
         }
-        
         var total = 0
-        var text = ""
+       
         for (i, stringNumber) in stringNumbers.enumerated() {
             if let number = Int(stringNumber) {
                 if operators[i] == "+" {
@@ -75,17 +68,13 @@ class Calculating {
                     total -= number
                 }
             }
-           
         }
-        
-        //textView.text = textView.text + "=\(total)"
-        text = text + "=\(total)"
-        
         clear()
-        
+        return "\(total)"
     }
     
-    func updateDisplay(){ //
+
+    func updateDisplay() -> String {
         var text = ""
         for (i, stringNumber) in stringNumbers.enumerated() {
             // Add operator
@@ -96,28 +85,28 @@ class Calculating {
             text += stringNumber
         }
         //textView.text = text
-        
+         return text
     }
     
     func clear() { //
         stringNumbers = [String()]
         operators = ["+"]
-        
     }
     
-    func plus() {
+    func plus() -> String {
         if canAddOperator {
             operators.append("+")
             stringNumbers.append("")
-            updateDisplay()
         }
+        return updateDisplay()
     }
-    func minus() {
+    
+    func minus() -> String {
         if canAddOperator {
             operators.append("-")
             stringNumbers.append("")
-            updateDisplay()
         }
+        return updateDisplay()
     }
     
 }
