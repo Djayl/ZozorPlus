@@ -13,7 +13,7 @@
 		C926DAE41D7581BB00477020 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C926DAE31D7581BB00477020 /* Assets.xcassets */; };
 		C926DAE71D7581BB00477020 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C926DAE51D7581BB00477020 /* LaunchScreen.storyboard */; };
 		F002ADEA226F72480046DC28 /* Calculating.swift in Sources */ = {isa = PBXBuildFile; fileRef = F002ADE9226F72480046DC28 /* Calculating.swift */; };
-		F096FAAB22663C76002DFCE9 /* CountOnMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F096FAAA22663C76002DFCE9 /* CountOnMeTests.swift */; };
+		F015925E227CA203004BA9B3 /* CalculatingTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F015925D227CA203004BA9B3 /* CalculatingTestCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,8 +35,8 @@
 		C926DAE61D7581BB00477020 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C926DAE81D7581BB00477020 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F002ADE9226F72480046DC28 /* Calculating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculating.swift; sourceTree = "<group>"; };
+		F015925D227CA203004BA9B3 /* CalculatingTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatingTestCase.swift; sourceTree = "<group>"; };
 		F096FAA822663C76002DFCE9 /* CountOnMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountOnMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F096FAAA22663C76002DFCE9 /* CountOnMeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountOnMeTests.swift; sourceTree = "<group>"; };
 		F096FAAC22663C76002DFCE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,8 +126,8 @@
 		F096FAA922663C76002DFCE9 /* CountOnMeTests */ = {
 			isa = PBXGroup;
 			children = (
-				F096FAAA22663C76002DFCE9 /* CountOnMeTests.swift */,
 				F096FAAC22663C76002DFCE9 /* Info.plist */,
+				F015925D227CA203004BA9B3 /* CalculatingTestCase.swift */,
 			);
 			path = CountOnMeTests;
 			sourceTree = "<group>";
@@ -187,6 +187,7 @@
 					};
 					F096FAA722663C76002DFCE9 = {
 						CreatedOnToolsVersion = 10.2;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						TestTargetID = C926DAD81D7581BB00477020;
 					};
@@ -246,7 +247,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F096FAAB22663C76002DFCE9 /* CountOnMeTests.swift in Sources */,
+				F015925E227CA203004BA9B3 /* CalculatingTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +423,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
@@ -436,6 +438,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = fr.djilalisakkar.CountOnMeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CountOnMe.app/CountOnMe";
@@ -448,6 +451,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;

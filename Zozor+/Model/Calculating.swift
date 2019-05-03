@@ -16,8 +16,8 @@ class Calculating {
     
     var warningHandlerDelegate: WarningHandler?
     
-    private var stringNumbers: [String] = [String()] //
-    private var operators: [String] = ["+"] //
+    var stringNumbers: [String] = [String()] //
+    var operators: [String] = ["+"] //
     
     var isExpressionCorrect: Bool { //
         if let stringNumber = stringNumbers.last {
