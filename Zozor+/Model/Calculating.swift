@@ -109,6 +109,20 @@ class Calculating {
         return updateDisplay()
     }
     
+    func squareRoot() -> String {
+        if !isExpressionCorrect {
+            return ""
+        }
+        
+        var text = 0.0
+        var total = ""
+            if let number = Double(stringNumbers.last!)  {
+               text = sqrt(number)
+                total = String(text)
+            }
+        return "\(total)"
+    }
+    
 }
 
 

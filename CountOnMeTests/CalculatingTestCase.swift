@@ -11,7 +11,19 @@ import XCTest
 
 class CalculatingTestCase: XCTestCase {
 
-    let calculating = Calculating()
+    
+    
+    var calculating: Calculating!
+    
+    override func setUp() {
+        super.setUp()
+        calculating = Calculating()
+    }
+    
+    func setStrings(_ myNumbers: [String], _ myOperators: [String]) {
+        calculating.stringNumbers = myNumbers
+        calculating.operators = myOperators
+    }
     
     func testGivenNil_WillEvaluateExpression_ThenExpressionIsFalse() {
         calculating.stringNumbers = []
@@ -24,4 +36,11 @@ class CalculatingTestCase: XCTestCase {
         XCTAssertTrue(calculating.canAddOperator)
     }
     
+    func testAddNewNumber() {
+        
+        calculating.addNewNumber(1)
+        
+        XCTAssert(calculating.stringNumbers[0] == "1")
+        
+    }
 }
