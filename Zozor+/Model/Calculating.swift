@@ -125,26 +125,4 @@ class Calculating {
         return updateDisplay()
     }
         
-//        if !isExpressionCorrect {
-//            return ""
-//        }
-        
-//        var text = 0.0
-//        var total = ""
-//            if let stringNumber = Double(stringNumbers.last!)  {
-//               text = sqrt(stringNumber)
-//               total = String(text)
-//                stringNumbers.append(total)
-//                operators.append("")
-//        
-//            }
-//        
-//        
-////        if stringNumbers.last == total {
-////            clear()
-////            return "\(total)"
-////        }
-//        clear()
-//        return "\(total)"
-//    }
 }
