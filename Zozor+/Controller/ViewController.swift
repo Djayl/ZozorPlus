@@ -50,6 +50,11 @@ class ViewController: UIViewController {
       
     }
     
+    @IBAction func squareRoot() {
+        textView.text = calculating.squareRoot()
+        
+    }
+    
 }
 
 

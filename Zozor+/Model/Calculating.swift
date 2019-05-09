@@ -58,10 +58,10 @@ class Calculating {
         if !isExpressionCorrect {
             return ""
         }
-        var total = 0
+        var total = 0.0
        
         for (i, stringNumber) in stringNumbers.enumerated() {
-            if let number = Int(stringNumber) {
+            if let number = Double(stringNumber) {
                 if operators[i] == "+" {
                     total += number
                 } else if operators[i] == "-" {
@@ -110,19 +110,41 @@ class Calculating {
     }
     
     func squareRoot() -> String {
-        if !isExpressionCorrect {
-            return ""
-        }
         
-        var text = 0.0
-        var total = ""
-            if let number = Double(stringNumbers.last!)  {
-               text = sqrt(number)
-                total = String(text)
+        if canAddOperator {
+            guard let result = Double(calculateTotal()) else { return updateDisplay() }
+            clear()
+            let squareRootValue = sqrt(result)
+            if let stringNumber = stringNumbers.last {
+                var stringNumberMutable = stringNumber
+                stringNumberMutable += "\(squareRootValue)"
+                stringNumbers[stringNumbers.count-1] = stringNumberMutable
             }
-        return "\(total)"
+            return String(squareRootValue)
+        }
+        return updateDisplay()
     }
-    
+        
+//        if !isExpressionCorrect {
+//            return ""
+//        }
+        
+//        var text = 0.0
+//        var total = ""
+//            if let stringNumber = Double(stringNumbers.last!)  {
+//               text = sqrt(stringNumber)
+//               total = String(text)
+//                stringNumbers.append(total)
+//                operators.append("")
+//        
+//            }
+//        
+//        
+////        if stringNumbers.last == total {
+////            clear()
+////            return "\(total)"
+////        }
+//        clear()
+//        return "\(total)"
+//    }
 }
-
-

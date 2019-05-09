@@ -118,7 +118,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="e5M-ww-B3O">
-                                        <rect key="frame" x="201.5" y="0.0" width="66.5" height="152"/>
+                                        <rect key="frame" x="201.5" y="0.0" width="66.5" height="206"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fdG-Q6-4Mj">
                                                 <rect key="frame" x="0.0" y="0.0" width="66.5" height="44"/>
@@ -151,6 +151,17 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="tappedNumberButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bs8-U3-DST"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7H6-aj-2v1">
+                                                <rect key="frame" x="0.0" y="162" width="66.5" height="44"/>
+                                                <color key="backgroundColor" red="0.59966188669204712" green="0.57663732767105103" blue="0.56862598657608032" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                                <state key="normal" title="√">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="squareRoot" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dbv-d9-wsr"/>
                                                 </connections>
                                             </button>
                                         </subviews>
