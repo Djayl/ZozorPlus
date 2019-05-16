@@ -84,7 +84,7 @@ class Calculating {
             // Add number
             text += stringNumber
         }
-        //textView.text = text
+        
          return text
     }
     

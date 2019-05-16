@@ -11,8 +11,6 @@ import XCTest
 
 class CalculatingTestCase: XCTestCase {
 
-    
-    
     var calculating: Calculating!
     
     override func setUp() {
@@ -20,10 +18,6 @@ class CalculatingTestCase: XCTestCase {
         calculating = Calculating()
     }
     
-//    func setStrings(_ myNumbers: [String], _ myOperators: [String]) {
-//        calculating.stringNumbers = myNumbers
-//        calculating.operators = myOperators
-//    }
     
     func testGivenNil_WillEvaluateExpression_ThenExpressionIsFalse() {
         calculating.stringNumbers = []
@@ -63,14 +57,12 @@ class CalculatingTestCase: XCTestCase {
     func testGivenStringNumbersIsEmpty_WhenAddingNumber_ThenFirstStringNumberIsNumberAdded() {
         let _ = calculating.addNewNumber(1)
         XCTAssert(calculating.stringNumbers[0] == "1")
-        
     }
     
     func testGivenClear_WhenStringNumbersContainsAnything_ThenStringNumbersIsCleared() {
         calculating.clear()
         XCTAssert(calculating.stringNumbers[calculating.stringNumbers.count-1] == "")
         XCTAssert(calculating.operators == ["+"])
-        
     }
     
     func testGivenStringNumbersContainsSomething_WhenSubstraction_ThenSubstractionSignIsAdded() {
@@ -78,32 +70,22 @@ class CalculatingTestCase: XCTestCase {
         let _ = calculating.minus()
         XCTAssert(calculating.operators[1] == "-")
         XCTAssert(calculating.stringNumbers[0] == "3")
-        
-        
     }
     
-    func testGivenCanAddOperator_WhenStringNumberContainSomething_ThenCanAddOperatorReturnTrue() {
+    func testGivenCanAddOperator_WhenStringNumberContainsSomething_ThenCanAddOperatorReturnTrue() {
         let _ = calculating.addNewNumber(1)
         XCTAssertTrue(calculating.canAddOperator)
     }
     
-    func testCalculateTotal() {
-        
+    func testGivenOne_WhenAddingFour_ThenResultsIsFive() {
         let _ = calculating.addNewNumber(1)
-        
         let _ = calculating.plus()
         let _ = calculating.addNewNumber(4)
-        
-        //calculating.calculateTotal()
-        
-        
         XCTAssert(calculating.calculateTotal() == "5.0")
     }
     
     func testGivenStringNumbersContainsNine_WhenSquareRoot_ThenResultIsThree() {
         let _ = calculating.addNewNumber(9)
-       
-        
         XCTAssert(calculating.squareRoot() == "3.0")
     }
 }

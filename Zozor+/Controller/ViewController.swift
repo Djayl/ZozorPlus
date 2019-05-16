@@ -12,8 +12,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    
     // MARK: - Outlets
+    
     let calculating = Calculating()
     @IBOutlet weak var textView: UITextView!
     @IBOutlet var numberButtons: [UIButton]!
@@ -34,20 +34,15 @@ class ViewController: UIViewController {
     }
     
     @IBAction func plus() {
-        
         textView.text = calculating.plus()
-        
     }
     
     @IBAction func minus() {
-        
         textView.text = calculating.minus()
-    
     }
     
     @IBAction func equal() {
         textView.text = calculating.calculateTotal()
-      
     }
     
     @IBAction func squareRoot() {
@@ -56,7 +51,6 @@ class ViewController: UIViewController {
     }
     
 }
-
 
 extension ViewController: WarningHandler {
     func displayWarning(message: String) {
