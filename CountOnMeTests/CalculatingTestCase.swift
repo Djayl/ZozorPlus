@@ -19,43 +19,38 @@ class CalculatingTestCase: XCTestCase {
     }
     
     
-    func testGivenNil_WillEvaluateExpression_ThenExpressionIsFalse() {
-        calculating.stringNumbers = []
-        XCTAssert(calculating.isExpressionCorrect == true)
-    }
-    
     func testIsExpressionCorrect_WhenStringNumbersContainsNothing_ThenExpressionReturnsTrue() {
         calculating.stringNumbers = []
         XCTAssertTrue(calculating.isExpressionCorrect)
     }
     
     func testIsExpressionCorrect_WhenStringNumbersContainsSomething_ThenExpressionReturnsFalse() {
-        let _ = calculating.plus()
+        calculating.plus()
         XCTAssertFalse(calculating.isExpressionCorrect)
     }
     
     func testIsExpressionCorrect_WhenStringNumbersContainsOneThing_ThenExpressionReturnsFalse() {
-        let _ = calculating.addNewNumber(1)
-        let _ = calculating.calculateTotal()
+        calculating.addNewNumber(1)
+        calculating.calculateTotal()
         XCTAssertFalse(calculating.isExpressionCorrect)
     }
     
     func testIsExpressionCorrect_WhenTwoOperatorsAreAdded_ThenExpressionReturnsFalse() {
-        let _ = calculating.addNewNumber(1)
-        let _ = calculating.plus()
-        let _ = calculating.plus()
+        calculating.addNewNumber(1)
+        calculating.plus()
+        calculating.plus()
         XCTAssertFalse(calculating.isExpressionCorrect)
     }
     
     
     func testGivenStringNumbersIsEmpty_WhenAddingNumber_ThenExpressionIsTrue() {
         calculating.stringNumbers = []
-        let _ = calculating.addNewNumber(7)
+        calculating.addNewNumber(7)
         XCTAssertTrue(calculating.canAddOperator)
     }
     
     func testGivenStringNumbersIsEmpty_WhenAddingNumber_ThenFirstStringNumberIsNumberAdded() {
-        let _ = calculating.addNewNumber(1)
+        calculating.addNewNumber(1)
         XCTAssert(calculating.stringNumbers[0] == "1")
     }
     
@@ -66,8 +61,8 @@ class CalculatingTestCase: XCTestCase {
     }
     
     func testGivenStringNumbersContainsSomething_WhenSubstraction_ThenSubstractionSignIsAdded() {
-        let _ = calculating.addNewNumber(3)
-        let _ = calculating.minus()
+        calculating.addNewNumber(3)
+        calculating.minus()
         XCTAssert(calculating.operators[1] == "-")
         XCTAssert(calculating.stringNumbers[0] == "3")
     }
@@ -78,14 +73,16 @@ class CalculatingTestCase: XCTestCase {
     }
     
     func testGivenOne_WhenAddingFour_ThenResultsIsFive() {
-        let _ = calculating.addNewNumber(1)
-        let _ = calculating.plus()
-        let _ = calculating.addNewNumber(4)
-        XCTAssert(calculating.calculateTotal() == "5.0")
+        calculating.addNewNumber(1)
+        calculating.plus()
+        calculating.addNewNumber(4)
+        calculating.calculateTotal()
+        XCTAssertEqual(calculating.text, "5.0")
     }
     
     func testGivenStringNumbersContainsNine_WhenSquareRoot_ThenResultIsThree() {
-        let _ = calculating.addNewNumber(9)
-        XCTAssert(calculating.squareRoot() == "3.0")
+        calculating.addNewNumber(9)
+        calculating.squareRoot()
+        XCTAssertEqual(calculating.text, "3.0")
     }
 }

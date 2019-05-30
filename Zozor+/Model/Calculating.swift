@@ -18,6 +18,11 @@ class Calculating {
     
     var stringNumbers: [String] = [String()] //
     var operators: [String] = ["+"] //
+    var text = "" {
+        didSet {
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "updateDisplay"), object: nil, userInfo: ["value": text])
+        }
+    }
     
     var isExpressionCorrect: Bool { //
         if let stringNumber = stringNumbers.last {
@@ -45,18 +50,18 @@ class Calculating {
     }
     // MARK: - Methods
     
-    func addNewNumber(_ newNumber: Int) -> String { //
+    func addNewNumber(_ newNumber: Int)  { //
         if let stringNumber = stringNumbers.last {
             var stringNumberMutable = stringNumber
             stringNumberMutable += "\(newNumber)"
             stringNumbers[stringNumbers.count-1] = stringNumberMutable
         }
-        return updateDisplay()
+        text = updateDisplay()
     }
     
-    func calculateTotal() -> String  {
+    func calculateTotal()   {
         if !isExpressionCorrect {
-            return ""
+            text = ""
         }
         var total = 0.0
        
@@ -70,11 +75,11 @@ class Calculating {
             }
         }
         clear()
-        return "\(total)"
+        text = "\(total)"
     }
     
 
-    func updateDisplay() -> String {
+    func updateDisplay() -> String  {
         var text = ""
         for (i, stringNumber) in stringNumbers.enumerated() {
             // Add operator
@@ -91,28 +96,29 @@ class Calculating {
     func clear() { //
         stringNumbers = [String()]
         operators = ["+"]
+        text = ""
     }
     
-    func plus() -> String {
+    func plus()  {
         if canAddOperator {
             operators.append("+")
             stringNumbers.append("")
         }
-        return updateDisplay()
+        text = updateDisplay()
     }
     
-    func minus() -> String {
+    func minus()  {
         if canAddOperator {
             operators.append("-")
             stringNumbers.append("")
         }
-        return updateDisplay()
+        text = updateDisplay()
     }
     
-    func squareRoot() -> String {
+    func squareRoot()  {
         
         if canAddOperator {
-            guard let result = Double(calculateTotal()) else { return updateDisplay() }
+            guard let result = Double(text) else { return }
             clear()
             let squareRootValue = sqrt(result)
             if let stringNumber = stringNumbers.last {
@@ -120,9 +126,9 @@ class Calculating {
                 stringNumberMutable += "\(squareRootValue)"
                 stringNumbers[stringNumbers.count-1] = stringNumberMutable
             }
-            return String(squareRootValue)
+            text = String(squareRootValue)
         }
-        return updateDisplay()
+        text = updateDisplay()
     }
         
 }

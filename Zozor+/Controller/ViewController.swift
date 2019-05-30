@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         calculating.warningHandlerDelegate = self
+        NotificationCenter.default.addObserver(self, selector: #selector(updateDisplay(notification:)), name: Notification.Name(rawValue: "updateDisplay"), object: nil)
     }
     
     // MARK: - Action
@@ -28,26 +29,32 @@ class ViewController: UIViewController {
     @IBAction func tappedNumberButton(_ sender: UIButton) {
         for (i, numberButton) in numberButtons.enumerated() {
             if sender == numberButton {
-                textView.text = calculating.addNewNumber(i)
+                calculating.addNewNumber(i)
             }
         }
     }
     
     @IBAction func plus() {
-        textView.text = calculating.plus()
+        calculating.plus()
     }
     
     @IBAction func minus() {
-        textView.text = calculating.minus()
+        calculating.minus()
     }
     
     @IBAction func equal() {
-        textView.text = calculating.calculateTotal()
+        calculating.calculateTotal()
     }
     
     @IBAction func squareRoot() {
-        textView.text = calculating.squareRoot()
+        calculating.squareRoot()
         
+    }
+    
+    @objc private func updateDisplay(notification: Notification) {
+        guard let userInfo = notification.userInfo else { return }
+        let value = userInfo["value"] as? String
+        textView.text = value
     }
     
 }
